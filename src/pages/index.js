@@ -1,3 +1,28 @@
-import React from "react"
+import React from 'react'
+import { graphql } from 'gatsby'
+import Layout from '../components/layout'
 
-export default () => <div>Hello world!</div>
+export const query = graphql`
+  query {
+    wordpressPage(wordpress_id: { eq: 5 }) {
+      title
+      content
+    }
+    site {
+      id
+      siteMetadata {
+        title
+      }
+    }
+  }
+`
+
+const IndexPage = (props) => {
+  return (
+    <Layout title="Home page">
+      <div dangerouslySetInnerHTML={{__html: props.data.wordpressPage.content }}></div>
+    </Layout>
+  )
+}
+
+export default IndexPage;

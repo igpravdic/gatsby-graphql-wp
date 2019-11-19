@@ -1,0 +1,25 @@
+@import 'reset.scss';
+
+* {
+  color: black;
+}
+
+.wrapper{
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+
+  .content{
+    flex-grow: 1;
+  }
+
+  .container{
+    max-width: 720px;
+    margin: 0 auto;
+    width: 100%;
+  }
+}
+
+.has-text-align-center{
+  text-align: center;
+}
