@@ -19,6 +19,7 @@ module.exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions
   const blogTemplate = path.resolve('./src/templates/blog.js')
   const pageTemplate = path.resolve('./src/templates/page.js')
+  const categoryTemplate = path.resolve('./src/templates/category-list.js')
 
   const res = await graphql(`
     query {
@@ -33,6 +34,18 @@ module.exports.createPages = async ({ graphql, actions }) => {
       allWordpressPost{
         edges{
           node{
+            slug
+          }
+        }
+      }
+      allWordpressCategory(
+        filter: {
+          count: {ne: 0}
+        }
+      ){
+        edges{
+          node{
+            name
             slug
           }
         }
@@ -57,6 +70,17 @@ module.exports.createPages = async ({ graphql, actions }) => {
       path: `/blog/${edge.node.slug}`,
       context: {
         slug: edge.node.slug
+      }
+    })
+  })
+
+  res.data.allWordpressCategory.edges.forEach((edge) => {
+    createPage({
+      component: categoryTemplate,
+      path: `/category/${edge.node.slug}`,
+      context: {
+        slug: edge.node.slug,
+        categoryName: edge.node.name
       }
     })
   })

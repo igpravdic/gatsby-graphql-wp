@@ -1,6 +1,8 @@
 import React from 'react'
 import { Link, graphql, useStaticQuery } from 'gatsby'
 import headerStyles from '../styles/header/index.module.scss'
+import logo from "../../static/logo.jpg"
+import logo2x from "../../static/logo2x.jpg"
 
 const Header = () => {
   const data = useStaticQuery(graphql`
@@ -27,7 +29,11 @@ const Header = () => {
   return (
     <header className={headerStyles.header}>
       <div className={classes}>
-        <span><Link to="/">{data.site.siteMetadata.title}</Link></span>
+        <div className={headerStyles.logo}>
+          <Link to="/">
+            <img src={logo} srcset={logo2x} alt={data.site.siteMetadata.title}/>
+          </Link>
+        </div>
         <nav>
           <ul>
             {data.wordpressWpApiMenusMenusItems.items.map((edge, index) => {

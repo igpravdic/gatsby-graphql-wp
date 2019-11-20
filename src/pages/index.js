@@ -19,7 +19,7 @@ export const query = graphql`
 
 const IndexPage = (props) => {
   return (
-    <Layout title="Home page">
+    <Layout title="Welcome">
       <div dangerouslySetInnerHTML={{__html: props.data.wordpressPage.content }}></div>
     </Layout>
   )

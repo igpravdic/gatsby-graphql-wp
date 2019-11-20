@@ -1,5 +1,5 @@
 .header{
-  height: 100px;
+  height: 70px;
   border-bottom: 1px solid #ddd;
   display: flex;
   align-items: center;
@@ -10,19 +10,18 @@
     align-items: center;
   }
 
-  span{
-    margin-right: 40px;
-    margin-bottom: 0;
-    display: block;
+  .logo{
+    margin-right: 20px;
 
-    a{
-      text-decoration: none;
-      font-size: 22px;
-      font-weight: bold;
+    img{
+      max-width: 150px;
+      margin: 0;
     }
   }
 
   nav{
+    margin-left: auto;
+
     ul{
       list-style: none;
       margin: 0;
@@ -31,6 +30,10 @@
 
       li{
         margin: 0 15px 0 0;
+
+        &:last-of-type{
+          margin: 0;
+        }
 
         a[aria-current="page"]{
           border-bottom: 2px solid black;

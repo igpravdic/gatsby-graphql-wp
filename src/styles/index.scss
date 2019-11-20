@@ -1,7 +1,11 @@
 @import 'reset.scss';
+@import url('https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap');
 
-* {
-  color: black;
+body{
+  * {
+    color: black;
+    font-family: 'Roboto', sans-serif;
+  }
 }
 
 .wrapper{

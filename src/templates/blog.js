@@ -20,10 +20,15 @@ export const query = graphql`
 `
 
 const Blog = (props) => {
+  let img = ''
+  if(props.data.wordpressPost.featured_media){
+    img = <img src={props.data.wordpressPost.featured_media.source_url} alt={props.data.wordpressPost.title}/>
+  }
+  
   return (
     <Layout title={props.data.wordpressPost.title}>
       <h1>{props.data.wordpressPost.title}</h1>
-      <img src={props.data.wordpressPost.featured_media.source_url} alt="Alt text"/>
+      {img}
       <p>Published: {props.data.wordpressPost.date}</p>
       <div dangerouslySetInnerHTML={{__html: props.data.wordpressPost.content }}></div>
     </Layout>

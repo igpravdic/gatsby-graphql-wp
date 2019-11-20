@@ -17,6 +17,10 @@ export const data = graphql`
           slug
           date(formatString: "DD.MM.YYYY")
           content
+          categories{
+            name
+            slug
+          }
         }
       }
     }
@@ -39,10 +43,18 @@ const Page = (props) => {
     {props.data.allWordpressPost.edges.map((edge, index) => {
       return (
         <li key={index}>
-          <Link to={`/blog/${edge.node.slug}`}>
-            <h2>{edge.node.title}</h2>
-            <p>Created: {edge.node.date}</p>
-          </Link>
+          <Link to={`/blog/${edge.node.slug}`}><h2>{edge.node.title}</h2></Link>
+          <div className={postStyles.postdetails}>
+            <span className="data">Created: {edge.node.date}</span>
+            <div className={postStyles.categories}>
+              <span>Categories:</span>
+              {edge.node.categories.map((category, index) => {
+                return(
+                  <Link to={`/category/${category.slug}`}>{category.name}</Link>
+                )
+              })}
+            </div>
+          </div>
         </li>
       )
     })}

@@ -4,20 +4,17 @@
   list-style-type: none;
 
   li{
+    padding: 5px 10px;
+    background: #ddd;
 
     a{
       text-decoration: none;
       display: block;
-      padding: 5px 10px;
-      background: #ddd;
+      
       transition: all .2s ease;
 
       &:hover{
-        background: #2b2828;
-
-        h2, p{
-          color: #fff;
-        }
+        color: #fff;
       }
     }
   }
@@ -26,7 +23,21 @@
     margin-bottom: 0px;
   }
 
-  p{
-    font-size: 12px;
+  .postdetails{
+    display: flex;
+
+    span, a{
+      font-size: 12px;
+      padding: 0;
+    }
+
+    .categories{
+      margin-left: auto;
+      display: flex;
+
+      a{
+        margin-left: 10px;
+      }
+    }
   }
 }
