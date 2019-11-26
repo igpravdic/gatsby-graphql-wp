@@ -1,6 +1,7 @@
 import React from 'react'
 import { graphql, Link } from 'gatsby'
 import Layout from '../components/layout'
+import BlogPostCategoriesList from '../components/blog-post-categories-list'
 import postStyles from '../styles/posts.module.scss'
 
 export const data = graphql`
@@ -43,14 +44,7 @@ const CategoryPage = (props) => {
         <Link to={`/blog/${edge.node.slug}`}><h2>{edge.node.title}</h2></Link>
         <div className={postStyles.postdetails}>
           <span className="data">Created: {edge.node.date}</span>
-          <div className={postStyles.categories}>
-            <span>Categories:</span>
-            {edge.node.categories.map((category, index) => {
-              return(
-                <Link to={`/category/${category.slug}`}>{category.name}</Link>
-              )
-            })}
-          </div>
+          <BlogPostCategoriesList categoryObject={edge.node.categories}/>
         </div>
       </li>
     )

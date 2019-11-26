@@ -1,10 +1,18 @@
 @import 'reset.scss';
 @import url('https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap');
 
+// Helpers - Functions, mixins, variables,...
+
+@import 'helpers/_variables.scss';
+@import 'helpers/_functions.scss';
+@import 'helpers/_mixins.scss';
+
 body{
   * {
     color: black;
     font-family: 'Roboto', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 }
 
@@ -12,6 +20,14 @@ body{
   height: 100vh;
   display: flex;
   flex-direction: column;
+
+  @include mobileTabPortrait{
+    &.nav-open{
+      nav{
+        display: block;
+      }
+    }
+  }
 
   .content{
     flex-grow: 1;
@@ -21,6 +37,15 @@ body{
     max-width: 720px;
     margin: 0 auto;
     width: 100%;
+
+    &.content-container{
+      padding-bottom: 80px;
+
+      @include mobileTabPortrait{
+        padding-left: 15px;
+        padding-right: 15px;
+      }
+    }
   }
 }
 

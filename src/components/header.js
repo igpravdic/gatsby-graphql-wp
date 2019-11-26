@@ -1,10 +1,11 @@
 import React from 'react'
 import { Link, graphql, useStaticQuery } from 'gatsby'
-import headerStyles from '../styles/header/index.module.scss'
+import '../styles/header/index.scss'
 import logo from "../../static/logo.jpg"
 import logo2x from "../../static/logo2x.jpg"
+import HambMenu from '../components/hamb-menu'
 
-const Header = () => {
+const Header = (props) => {
   const data = useStaticQuery(graphql`
     query {
       wordpressWpApiMenusMenusItems(slug: {eq: "main-menu"}){
@@ -24,16 +25,17 @@ const Header = () => {
     }
   `)
 
-  const classes = `container ${headerStyles.container}`
+  const classes = `container`
 
   return (
-    <header className={headerStyles.header}>
+    <header className="header">
       <div className={classes}>
-        <div className={headerStyles.logo}>
+        <div className="logo">
           <Link to="/">
-            <img src={logo} srcset={logo2x} alt={data.site.siteMetadata.title}/>
+            <img src={logo} srcSet={logo2x} alt={data.site.siteMetadata.title}/>
           </Link>
         </div>
+        <HambMenu handleMobileNavClick={props.handleMobileNavClick} mobileNavState={props.mobileNavState}/>
         <nav>
           <ul>
             {data.wordpressWpApiMenusMenusItems.items.map((edge, index) => {

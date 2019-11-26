@@ -10,7 +10,7 @@ export const query = graphql`
       id
       title
       content
-      date(formatString: "DD.MM.YYYY")
+      date(formatString: "MMMM Do, YYYY")
       featured_media {
         link
         source_url
@@ -24,12 +24,12 @@ const Blog = (props) => {
   if(props.data.wordpressPost.featured_media){
     img = <img src={props.data.wordpressPost.featured_media.source_url} alt={props.data.wordpressPost.title}/>
   }
-  
+
   return (
     <Layout title={props.data.wordpressPost.title}>
       <h1>{props.data.wordpressPost.title}</h1>
       {img}
-      <p>Published: {props.data.wordpressPost.date}</p>
+      <p>Published on {props.data.wordpressPost.date}</p>
       <div dangerouslySetInnerHTML={{__html: props.data.wordpressPost.content }}></div>
     </Layout>
   )
