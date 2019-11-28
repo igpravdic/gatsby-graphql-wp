@@ -1,6 +1,5 @@
 import React from 'react'
 import { Link, graphql, useStaticQuery } from 'gatsby'
-import '../styles/header/index.scss'
 import logo from "../../static/logo.jpg"
 import logo2x from "../../static/logo2x.jpg"
 import HambMenu from '../components/hamb-menu'

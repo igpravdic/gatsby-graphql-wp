@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import Header from '../components/header'
 import Footer from '../components/footer'
-import '../styles/index.scss'
+import '../styles/main.scss'
 import Head from '../components/head'
 
 class Layout extends Component{
@@ -25,9 +25,9 @@ class Layout extends Component{
 
   render(){
     return (
-      <div className={`wrapper${this.state.mobileNavState ? ' nav-open' : ''}`}>
+      <div className={`wrapper${this.state.mobileNavState ? ' nav-open' : ''}${this.props.customClass ? ' '+this.props.customClass : ''}`}>
         <div className="content">
-          <Head title={ this.title }/>
+          <Head title={ this.props.title }/>
           <Header handleMobileNavClick={ this.handleMobileNavClick } mobileNavState={this.state.mobileNavState}/>
           <div className="container content-container">
             { this.props.children}

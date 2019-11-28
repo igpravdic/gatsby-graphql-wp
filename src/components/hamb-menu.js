@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import '../styles/header/index.scss'
 
 class HambMenu extends Component {
   render(){
